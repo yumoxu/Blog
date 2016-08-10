@@ -3,18 +3,16 @@ layout: default
 title: Git Operations
 ---
 <h2>{{ page.title }}</h2>
-<p>
----------- branch ----------
-create a new branch: git branch dev 
-shift to another branch: git checkout dev
-create a new branch and shift to it: git checkout -b dev
-list local branches: git branch
-list local and remote branches: git branch -va
-merge branch dev to the active branch: git merge dev
-delete local branch: git branch -d dev
-delete remote branch(if default, change it in the project configuration on the github website): git push origin --delete dev
----------- repository ----------
-create new remote repository handler and name it as 'origin': git remote add origin https://github.com/username/xxx.git
-delete remote repository handler 'origin': git remote rm origin
-</p>
+<p>---------- branch ----------</p>
+<p>create a new branch: git branch dev</p> 
+<p>shift to another branch: git checkout dev</p>
+<p>create a new branch and shift to it: git checkout -b dev</p>
+<p>list local branches: git branch</p>
+<p>list local and remote branches: git branch -va</p>
+<p>merge branch dev to the active branch: git merge dev</p>
+<p>delete local branch: git branch -d dev</p>
+<p>delete remote branch(if default, change it in the project configuration on the github website): git push origin --delete dev</p>
+<p>---------- repository ----------</p>
+<p>create new remote repository handler and name it as 'origin': git remote add origin https://github.com/username/xxx.git</p>
+<p>delete remote repository handler 'origin': git remote rm origin</p>
 <p>{{ page.date | date_to_string }}</p>
