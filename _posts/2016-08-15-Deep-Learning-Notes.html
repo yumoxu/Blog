@@ -1,0 +1,28 @@
+---
+layout: default
+title: Deep Learning Notes
+---
+<h2>{{ page.title }}</h2>
+<p>
+Problems in deep learning with BP:<br />
+[1] Too many parameters => lack of labelled data => overfitting. <br />
+[2] Non-convex optimization problem => local extrema.
+[3] Diffusion gradient.
+</p>
+
+<p>
+Solutions:<br />
+[1] Auto-encoders: uilize unlabelled data<br />
+1. Forward Network <br />
+2. RBM + layer-wise learning <br />
+[2] CNN: compress parameters
+</p>
+
+<p>
+Auto-encoders: <br /> 
+find f(), g() that satisfies g(f(x)) ~~ x. X = f(x) can be regarded as features of the input x. <br />
+Find f(), g(): <br />
+[1] 3-layer FNN
+
+</p>
+<p>{{ page.date | date_to_string }}</p>
