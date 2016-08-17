@@ -9,19 +9,15 @@ title: Deep Learning Notes
 <h1>{{ page.title }}</h1>
 
 <h2>Problems in deep learning with BP:</h2>
-<p>
-(1) Too many parameters => lack of labelled data => overfitting. <br />
-(2) Non-convex optimization problem => local extrema. <br />
-(3) Diffusion gradient.
-</p>
+<p>(1) Too many parameters => lack of labelled data => overfitting. </p>
+<p>(2) Non-convex optimization problem => local extrema. </p>
+<p>(3) Diffusion gradient.</p>
 
 <h2>Solutions:</h2>
-<p>
-(1) Auto-encoders: utilize unlabelled data<br />
-&nbsp&nbsp&nbsp&nbsp 1. Forward Network <br />
-&nbsp&nbsp&nbsp&nbsp 2. RBM + layer-wise learning <br />
-(2) CNN: compress parameters
-</p>
+<p>(1) Auto-encoders: utilize unlabelled data</p>
+<p>&nbsp&nbsp&nbsp&nbsp 1. Forward Network </p>
+<p>&nbsp&nbsp&nbsp&nbsp 2. RBM </p>
+<p>(2) CNN: compress parameters</p>
 
 <h2>Auto-encoders: </h2> 
 <p>Find f(), g() that satisfies g(f(x)) ~~ x. f() is the encoder and g() is the decoder. Then, X = f(x) can be regarded as features of the input x. </p>
@@ -36,7 +32,7 @@ title: Deep Learning Notes
 <h3>(2) Anto-encoders with RBM (Restricted Boltzmann Machine)</h3>
 <p>Reference: Reducing the dimensionality of Data by NN-- Hinton</p>
 <p>RBM: a simple probabilistic undirected graph. X = (v_1, v_2, ..., v_m, h_1, h_2, ..., h_n) ^ T. Restricted: no edges in inner V and inner H. </p>
-<p>Learning: use CD Algorithm to calculate patial derivatives for each parameter in the MLE function, then gradient descend.</p>
+<p>Learning: use CD Algorithm to calculate patial derivatives for each parameter in the MLE function, then gradient descend it.</p>
 
 
 
