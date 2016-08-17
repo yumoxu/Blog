@@ -1,0 +1,23 @@
+header{   
+    width:100%;   
+    height:80px;   
+    border-bottom:#0586C9 5px solid;   
+}   
+
+h1{   
+    height:100%;   
+    font-size:36px;   
+    color:#0586C9;   
+    line-height:2em;   
+
+}   
+
+h2{   
+    color:#999;
+}  
+
+p{
+    line-height:1.5em;/*行距为1.5个单位*/
+}
+
+
