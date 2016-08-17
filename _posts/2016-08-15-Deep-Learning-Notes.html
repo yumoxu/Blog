@@ -8,12 +8,12 @@ title: Deep Learning Notes
 
 <h1>{{ page.title }}</h1>
 
-<h2>Problems in deep learning with BP:</h2>
+<h2>Problems in deep learning with BP</h2>
 <li>Too many parameters => lack of labelled data => overfitting.</li>
 <li>Non-convex optimization problem => local extrema. </li>
 <li>Diffusion gradient.</li>
 
-<h2>Solutions:</h2>
+<h2>Solutions</h2>
 <li>Auto-encoders: utilize unlabelled data</li>
 <ul>
     <li>Forward Network </li>
@@ -21,7 +21,7 @@ title: Deep Learning Notes
 </ul>
 <li>CNN: compress parameters</li>
 
-<h2>Auto-encoders: </h2> 
+<h2>Auto-encoders</h2> 
 <p>Find f(), g() that satisfies g(f(x)) ~~ x. f() is the encoder and g() is the decoder. Then, X = f(x) can be regarded as features of the input x. </p>
 <p>The main task here is to find f() and g(), or in other words, learn parameters in f() and g(): </p>
 <h3>(1) Auto-encoders with FNN </h3>
@@ -36,7 +36,7 @@ title: Deep Learning Notes
 <i>RBM</i>: a simple probabilistic undirected graph. X = (v_1, v_2, ..., v_m, h_1, h_2, ..., h_n) ^ T. <i>Restricted</i>: no edges in inner V and inner H. </p>
 <p>Learning: use <i>CD Algorithm</i> to calculate patial derivatives for each parameter in the MLE function, then gradient descend it.</p>
 
-<h2>CNN:</h2>
+<h2>CNN</h2>
 <p>Widely applied in CV. Take advantage of the concept of <i>filter</i> in the signal processing field.</p>
 <h3>(1) Convolutional layer</h3>
 <p>The filter is <b>size-fixed</b>, e.g. m * n in 2-dimensional situation. Each node in convolutional layer l represents certain information of several nodes in layer l-1 through a filter and a <i>connection table</i>. The filters connected to each node in layer l are different, which are <b>parameters to be learnt</b>. The connection table defines the connection status between layer l-1 and layer l. The node value in layer l equals to the sigmoid function taking the summation of correlated nodes in layer l-1 as the input.</p>
