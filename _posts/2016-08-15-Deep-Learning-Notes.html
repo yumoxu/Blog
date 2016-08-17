@@ -18,20 +18,17 @@ Solutions:<br />
 (2) CNN: compress parameters
 </p>
 
-<p>
-Auto-encoders: <br /> 
-Find f(), g() that satisfies g(f(x)) ~~ x. f() is the encoder and g() is the decoder. Then, X = f(x) can be regarded as features of the input x. <br />
-The main task here is to find f() and g(), or in other words, learn parameters in f() and g(): <br />
-(1) Auto-encoders with FNN <br />
-We first use 3-layer FNN to build an auto-encoder. To obtain better features, we can make #X &lt #x, or make X sparse.<br />
-The auto-encoder is called sparse auto-encoders in the latter situation, where we use K-L divergence to measure the sparsity in the loss function.<br />
-Here, corresponding to the 3-layer FNN structure, f() is the non-linear function transferring z => a, and g() is a linear function: wx+b. We can use BP algorithm here to learn the parameters because the FNN is relatively shallow.<br />
-We can also use the network with more layers to build the auto-encoder. The learning method used is called layer-wise learning, which contains pre-training and fine-training. As to the pre-training, we train the sub-network with the first 3 layers as an auto-encoder, whose outputs, g(f(x)), become the inputs of 3rd layer-- the first layer of the next 3-layer auto-encoder. Continue the loop until approaching the last layer.<br />
-As to the fine-training, we regard all the encoding process in the layer-wise learning as a whole, so do the decoding process. The original process encode-decode-encode-decode... can then be regarded as encode-encode-...-decode-decode-...(multi-layer encoding + multi-layer decoding). We then have a multi-layer auto-encoder. As to the multi-layer auto-encoder, thanks to the pre-training step, we have good initial values for each layer, thus BP algorithm can be utilized again to fine-train all the parameters. <br />
-(2) Anto-encoders with RBM
+<p>Auto-encoders: </p> 
+<p>Find f(), g() that satisfies g(f(x)) ~~ x. f() is the encoder and g() is the decoder. Then, X = f(x) can be regarded as features of the input x. </p>
+<p>The main task here is to find f() and g(), or in other words, learn parameters in f() and g(): </p>
+<p>(1) Auto-encoders with FNN </p>
+<p>We first use 3-layer FNN to build an auto-encoder. To obtain better features, we can make #X &lt #x, or make X sparse.</p>
+<p>The auto-encoder is called sparse auto-encoders in the latter situation, where we use K-L divergence to measure the sparsity in the loss function.</p>
+<p>Here, corresponding to the 3-layer FNN structure, f() is the non-linear function transferring z => a, and g() is a linear function: wx+b. We can use BP algorithm here to learn the parameters because the FNN is relatively shallow.</p>
+<p>We can also use the network with more layers to build the auto-encoder. The learning method used is called layer-wise learning, which contains pre-training and fine-training. As to the pre-training, we train the sub-network with the first 2 layers and a manually-added hidden layer as an auto-encoder, after which we have f(), g() and the encoded value X in the 2th layer. Then, we regard X as the inputs, and train another shallow auto-encoder together with the 3rd layer and another manually-added hiden layer...Continue the loop until approaching the last layer. Thus, we have all the f(), g() as well as initial values in each layer.</p>
+<p>As to the fine-training, we regard all the encoding process in the layer-wise learning as a whole, so do the decoding process. The original process encode-decode-encode-decode... can then be regarded as encode-encode-...-X-decode-...-decode(multi-layer encoding + multi-layer decoding). We then have a multi-layer auto-encoder. As to the multi-layer auto-encoder, thanks to the pre-training step, we have good initial values in each layer, thus BP algorithm can be utilized again to fine-train all the parameters. The final X here is called "deep features". </p>
+<p>Deep features can be applied to supervised classfication problems. What is noteworthy here is that if big data is available, we can fine-train again the parameters in the encoding function together with the classification function supervisely. </p>
+<p>(2) Anto-encoders with RBM</p>
 
 
-
-
-</p>
 <p>{{ page.date | date_to_string }}</p>
