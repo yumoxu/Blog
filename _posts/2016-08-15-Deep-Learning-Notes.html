@@ -38,6 +38,8 @@ title: Deep Learning Notes
 <p>Widely applied in CV. Take advantage of the concept of "filter" in the signal processing field.</p>
 <h3>(1) Convolutional layer</h3>
 <p>The filter is size-fixed, e.g. m * n in 2-dimensional situation. Each node in convolutional layer l represents certain information of several nodes in layer l-1 through a filter and a "connection table". The filters connected to each node in layer l are different, which are parameters to be learnt. The connection table defines the connection status between layer l-1 and layer l. The node value in layer l equals to the sigmoid function taking the summation of correlated nodes in layer l-1 as the input.</p>
-<h3>(2) Sub-sampling and pooling</h3>
+<h3>(2) Sub-sampling and pooling layer</h3>
+<p>We sub-sample 2-dimensional values (p, q, r, s) in each node in layer l-1, then pooled them to sigmoid(w * (p+q+r+s) + b), where w and b are parameters to be leant. The "field size" here is 2.</p>
+<p>2 * 2 is then compressed to 1 * 1. Generally we connect a sub-sampling and pooling layer after a convolutional layer.</p>
 
 <p>{{ page.date | date_to_string }}</p>
