@@ -44,7 +44,9 @@ title: Deep Learning Notes
 \[P(x) = P(v,h) = \frac{1}{Z}\exp\{\sum_i{a_i v_i} + \sum_j{b_j h_j} + \sum{w_{ij} v_i h_j}\}\] 
 <i>Restricted</i>: no edges in inner $v$ and inner $h$. </p>
 <p>Learning: use <i>CD Algorithm</i> to calculate patial derivatives for each parameter in the MLE function, then gradient descend it.</p>
-
+<p>RBM for deep learning: pre-training (layer-wise learning) and fine-training, shown as following:</p>
+<img src = 'images/2016-08-15-Deep-Learning-Notes/rbm_layerwise_learning.png'>
+<img src = 'images/2016-08-15-Deep-Learning-Notes/rbm_fine_training.png'>
 <h2>CNN</h2>
 <p>Widely applied in CV. Take advantage of the concept of <i>filter</i> in the signal processing field.</p>
 <h3>(1) Convolutional layer</h3>
