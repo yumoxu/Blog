@@ -66,7 +66,7 @@ title: Deep Learning Notes
 <div align = 'center'>
     <img src = '/images/2016-08-15-Deep-Learning-Notes/nnlm.png' width="200">
 </div>
-<p>Key points:
+<p>Explanation:
 <li>Input size: $n-1$. Dictionary size: $|D|$</li>
 <li>$w_{t-i} \to C(w_{t-i})$: Table look-up. Usually one-hot representation, so represenation size $m = |D|$.</li>
 <li>tanh layer: connect all the $C(w_{t-i})$ to x. Linear + nonlinear transformation. Ouput: $Z = tanh(Hx + b)$, where $H \in R^{(m * (n-1)) * h}$.</li>
