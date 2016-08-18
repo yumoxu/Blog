@@ -37,16 +37,16 @@ title: Deep Learning Notes
 <p>We can also use the network with more layers to build the auto-encoder. There are mainly 2 steps: <b>pre-training</b> and <b>fine-training</b>. The learning method used in the pre-training is called <i>layerwise-learning</i>. To be more concret, we train the sub-network with the first 2 layers and a manually-added hidden layer as an auto-encoder, after which we have $f()$, $g()$ and the encoded value $X$ in the 2th layer. Then, we regard $X$ as the inputs, and train another shallow auto-encoder together with the 3rd layer and another manually-added hiden layer...Continue the loop until approaching the last layer. Thus, we have all the $f()$, $g()$ as well as initial values in each layer.</p>
 <p>As to the fine-training, we regard all the encoding process in the layer-wise learning as a whole, so do the decoding process. We use $C$, $D$ to denote encoding and decoding process, repectively. The original process $C-D-C-D-...-C-D$ can then be regarded as $C-C-...-C-(-X)-D-D...D$. We then have a multi-layer auto-encoder. As to the multi-layer auto-encoder, thanks to the pre-training step, we have good initial values in each layer, thus BP algorithm can be utilized again to fine-train all the parameters. The final $X$ here is called <i>deep feature</i>. </p>
 <p>Deep features can be applied to supervised classfication problems. What is noteworthy here is that if big data is available, we can fine-train again the parameters in the encoding function together with the classification function supervisely. </p>
-<h3>(2) Anto-encoders with RBM (Restricted Boltzmann Machine)</h3>
+<h3>(2) Anto-encoders with RBM (Restricted Boltzmann Machine) and DBM (Deep Boltzmann Machine)</h3>
 <p>Reference: <i>Reducing the dimensionality of Data by NN, Hinton</i></p>
 <p>
 <i>RBM</i>: a simple probabilistic undirected graph. Input: $x = (v_1, v_2, ..., v_m, h_1, h_2, ..., h_n) ^ T$. Model:
 \[P(x) = P(v,h) = \frac{1}{Z}\exp\{\sum_i{a_i v_i} + \sum_j{b_j h_j} + \sum{w_{ij} v_i h_j}\}\] 
 <i>Restricted</i>: no edges in inner $v$ and inner $h$. </p>
+<img src = '/images/2016-08-15-Deep-Learning-Notes/rbm.png'>
 <p>Learning: use <i>CD Algorithm</i> to calculate patial derivatives for each parameter in the MLE function, then gradient descend it.</p>
-<p>RBM for deep learning: pre-training (layer-wise learning) and fine-training, shown as following:</p>
-<img src = '/images/2016-08-15-Deep-Learning-Notes/rbm_layerwise_learning.png'>
-<img src = '/images/2016-08-15-Deep-Learning-Notes/rbm_fine_training.png'>
+<p>DBM: pre-training (layer-wise learning) and fine-training.</p>
+<img src = '/images/2016-08-15-Deep-Learning-Notes/dbm.png'>
 <h2>CNN</h2>
 <p>Widely applied in CV. Take advantage of the concept of <i>filter</i> in the signal processing field.</p>
 <h3>(1) Convolutional layer</h3>
