@@ -69,8 +69,8 @@ title: Deep Learning Notes
 <p>Explanation:
 <li>Input size: $n-1$. Dictionary size: $|D|$</li>
 <li>$w_{t-i} \to C(w_{t-i})$: Table look-up. Usually one-hot representation, so represenation size $m = |D|$.</li>
-<li>tanh layer: connect all the $C(w_{t-i})$ to x. Linear + nonlinear transformation. Ouput: $Z = tanh(Hx + b)$, where $H \in R^{(m * (n-1)) * h}$.</li>
+<li>tanh layer: connect all the $C(w_{t-i})$. Linear + nonlinear transformation. Ouput: $Z = tanh(Hx + b)$, where $H \in R^{(m * (n-1)) * h}$.</li>
 <li>Softmax layer: Linear + nonlinear transformation. $Y = softmax(W * Z + d)$, where $W \in R^{|D| * h}$.</li>
-<li>Final result: $p(w_t|context) = \frac{e^{y_t}}{\sum_{i}^{|D| y_i}}$.</li>
+<li>Final result: $p(w_t|context) = \frac{e^{y_t}}{\sum_{i}^{|D|} e^{y_i}}$.</li>
 </p>
 <p>{{ page.date | date_to_string }}</p>
