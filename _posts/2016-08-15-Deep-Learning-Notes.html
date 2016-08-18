@@ -29,7 +29,7 @@ title: Deep Learning Notes
 
 <h2>Auto-encoders</h2> 
 <p>Find $f()$, $g()$ that satisfies $g(f(x)) \approx x$. $f()$ is the encoder and $g()$ is the decoder. Then, $X = f(x)$ can be regarded as features of the input $x$. </p>
-<p>The main task here is to find $f()$ and $g()$, or in other words, learn parameters in f() and $g()$: </p>
+<p>The main task here is to find $f()$ and $g()$, or in other words, learn parameters in $f()$ and $g()$: </p>
 <h3>(1) Auto-encoders with FNN </h3>
 <p>We first use 3-layer FNN to build an auto-encoder. To obtain better features, we can make $#X > #x$, or make $X$ sparse.</p>
 <p>The auto-encoder is called <i>sparse auto-encoders</i> in the latter situation, where we use K-L divergence to measure the sparsity in the loss function.</p>
@@ -38,8 +38,12 @@ title: Deep Learning Notes
 <p>As to the fine-training, we regard all the encoding process in the layer-wise learning as a whole, so do the decoding process. We use $C$, $D$ to denote encoding and decoding process, repectively. The original process $C-D-C-D-...-C-D$ can then be regarded as $C-C-...-C-(-X)-D-D...D$. We then have a multi-layer auto-encoder. As to the multi-layer auto-encoder, thanks to the pre-training step, we have good initial values in each layer, thus BP algorithm can be utilized again to fine-train all the parameters. The final $X$ here is called <i>deep feature</i>. </p>
 <p>Deep features can be applied to supervised classfication problems. What is noteworthy here is that if big data is available, we can fine-train again the parameters in the encoding function together with the classification function supervisely. </p>
 <h3>(2) Anto-encoders with RBM (Restricted Boltzmann Machine)</h3>
-<p>Reference: Reducing the dimensionality of Data by NN-- Hinton</p>
-<i>RBM</i>: a simple probabilistic undirected graph. $x = (v_1, v_2, ..., v_m, h_1, h_2, ..., h_n) ^ T$, $P(x) = P(v,h) = \frac{1}{Z}\exp\{\sum_i{a_i v_i} + \sum_j{b_j h_j} + \sum{w_{ij} v_i h_j}\}$. <i>Restricted</i>: no edges in inner $v$ and inner $h$. </p>
+<p>Reference: <i>Reducing the dimensionality of Data by NN, Hinton<i></p>
+<p>
+<i>RBM</i>: a simple probabilistic undirected graph. Input: $x = (v_1, v_2, ..., v_m, h_1, h_2, ..., h_n) ^ T$. Model:
+/[P(x) = P(v,h) = \frac{1}{Z}\exp\{\sum_i{a_i v_i} + \sum_j{b_j h_j} + \sum{w_{ij} v_i h_j}\}\]. 
+</p>
+<p><i>Restricted</i>: no edges in inner $v$ and inner $h$. </p>
 <p>Learning: use <i>CD Algorithm</i> to calculate patial derivatives for each parameter in the MLE function, then gradient descend it.</p>
 
 <h2>CNN</h2>
