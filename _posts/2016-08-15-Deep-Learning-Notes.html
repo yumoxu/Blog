@@ -4,6 +4,12 @@ title: Deep Learning Notes
 --
 <head>
     <link rel="stylesheet" type="text/css" href="note_style.css" />
+    <script type="text/javascript" async
+        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['(',')']]}});
+    </script>
 </head>
 
 <h1>{{ page.title }}</h1>
@@ -22,26 +28,26 @@ title: Deep Learning Notes
 <li>CNN: compress parameters</li>
 
 <h2>Auto-encoders</h2> 
-<p>Find f(), g() that satisfies g(f(x)) ~~ x. f() is the encoder and g() is the decoder. Then, X = f(x) can be regarded as features of the input x. </p>
-<p>The main task here is to find f() and g(), or in other words, learn parameters in f() and g(): </p>
+<p>Find $f()$, $g()$ that satisfies $g(f(x)) \approx x$. $f()% is the encoder and $g()$ is the decoder. Then, $X = f(x)$ can be regarded as features of the input $x$. </p>
+<p>The main task here is to find $f()$ and $g()$, or in other words, learn parameters in f() and $g()$: </p>
 <h3>(1) Auto-encoders with FNN </h3>
-<p>We first use 3-layer FNN to build an auto-encoder. To obtain better features, we can make #X &lt #x, or make X sparse.</p>
+<p>We first use 3-layer FNN to build an auto-encoder. To obtain better features, we can make $#X > #x$, or make $X$ sparse.</p>
 <p>The auto-encoder is called <i>sparse auto-encoders</i> in the latter situation, where we use K-L divergence to measure the sparsity in the loss function.</p>
-<p>Here, corresponding to the 3-layer FNN structure, f() is the non-linear function transferring z => a, and g() is a linear function: wx+b. We can use BP algorithm here to learn the parameters because the FNN is relatively shallow.</p>
-<p>We can also use the network with more layers to build the auto-encoder. There are mainly 2 steps: <b>pre-training</b> and <b>fine-training</b>. The learning method used in the pre-training is called <i>layerwise-learning</i>. To be more concret, we train the sub-network with the first 2 layers and a manually-added hidden layer as an auto-encoder, after which we have f(), g() and the encoded value X in the 2th layer. Then, we regard X as the inputs, and train another shallow auto-encoder together with the 3rd layer and another manually-added hiden layer...Continue the loop until approaching the last layer. Thus, we have all the f(), g() as well as initial values in each layer.</p>
-<p>As to the fine-training, we regard all the encoding process in the layer-wise learning as a whole, so do the decoding process. The original process encode-decode-encode-decode... can then be regarded as encode-encode-...-X-decode-...-decode(multi-layer encoding + multi-layer decoding). We then have a multi-layer auto-encoder. As to the multi-layer auto-encoder, thanks to the pre-training step, we have good initial values in each layer, thus BP algorithm can be utilized again to fine-train all the parameters. The final X here is called <i>deep feature</i>. </p>
+<p>Here, corresponding to the 3-layer FNN structure, $f()$ is the non-linear function transferring $z$ to $a$, and $g()$ is a linear function: $g(x) = wx+b$. We can use BP algorithm here to learn the parameters because the FNN is relatively shallow.</p>
+<p>We can also use the network with more layers to build the auto-encoder. There are mainly 2 steps: <b>pre-training</b> and <b>fine-training</b>. The learning method used in the pre-training is called <i>layerwise-learning</i>. To be more concret, we train the sub-network with the first 2 layers and a manually-added hidden layer as an auto-encoder, after which we have $f()$, $g()$ and the encoded value $X$ in the 2th layer. Then, we regard $X$ as the inputs, and train another shallow auto-encoder together with the 3rd layer and another manually-added hiden layer...Continue the loop until approaching the last layer. Thus, we have all the $f()$, $g()$ as well as initial values in each layer.</p>
+<p>As to the fine-training, we regard all the encoding process in the layer-wise learning as a whole, so do the decoding process. We use $C$, $D$ to denote encoding and decoding process, repectively. The original process $C-D-C-D-...-C-D$ can then be regarded as $C-C-...-C-(-X)-D-D...D$ (multi-layer encoding + multi-layer decoding). We then have a multi-layer auto-encoder. As to the multi-layer auto-encoder, thanks to the pre-training step, we have good initial values in each layer, thus BP algorithm can be utilized again to fine-train all the parameters. The final $X$ here is called <i>deep feature</i>. </p>
 <p>Deep features can be applied to supervised classfication problems. What is noteworthy here is that if big data is available, we can fine-train again the parameters in the encoding function together with the classification function supervisely. </p>
 <h3>(2) Anto-encoders with RBM (Restricted Boltzmann Machine)</h3>
 <p>Reference: Reducing the dimensionality of Data by NN-- Hinton</p>
-<i>RBM</i>: a simple probabilistic undirected graph. X = (v_1, v_2, ..., v_m, h_1, h_2, ..., h_n) ^ T. <i>Restricted</i>: no edges in inner V and inner H. </p>
+<i>RBM</i>: a simple probabilistic undirected graph. $x = (v_1, v_2, ..., v_m, h_1, h_2, ..., h_n) ^ T$, $P(x) = P(v,h) = \frac{1}{Z}\exp\{\sum_i{a_i v_i} + \sum_j{b_j h_j} + \sum{w_{ij} v_i h_j}\}$. <i>Restricted</i>: no edges in inner $v$ and inner $h$. </p>
 <p>Learning: use <i>CD Algorithm</i> to calculate patial derivatives for each parameter in the MLE function, then gradient descend it.</p>
 
 <h2>CNN</h2>
 <p>Widely applied in CV. Take advantage of the concept of <i>filter</i> in the signal processing field.</p>
 <h3>(1) Convolutional layer</h3>
-<p>The filter is <b>size-fixed</b>, e.g. m * n in 2-dimensional situation. Each node in convolutional layer l represents certain information of several nodes in layer l-1 through a filter and a <i>connection table</i>. The filters connected to each node in layer l are different, which are <b>parameters to be learnt</b>. The connection table defines the connection status between layer l-1 and layer l. The node value in layer l equals to the sigmoid function taking the summation of correlated nodes in layer l-1 as the input.</p>
+<p>The filter is <b>size-fixed</b>, e.g. $m * n$ in 2-dimensional situation. Each node in convolutional layer $l$ represents certain information of several nodes in layer $l-1$ through a filter and a <i>connection table</i>. The filters connected to each node in layer $l$ are different, which are <b>parameters to be learnt</b>. The connection table defines the connection status between layer $l-1$ and layer $l$. The node value in layer $l$ equals to the sigmoid function taking the summation of correlated nodes in layer $l-1$ as the input.</p>
 <h3>(2) Sub-sampling and pooling layer</h3>
-<p>We <i>sub-sample</i> 2-dimensional values (p, q, r, s) in each node in layer l-1, then <i>pooled</i> them to sigmoid(w * (p+q+r+s) + b), where w and b are parameters to be leant. The <i>field size</i>" here is 2. 2 * 2 is then compressed to 1 * 1.</p> 
+<p>We <i>sub-sample</i> 2-dimensional values $(p, q, r, s)$ in each node in layer $l-1$, then <i>pooled</i> them to $sigmoid(w * (p+q+r+s) + b)$, where $w$ and $b$ are parameters to be leant. The <i>field size</i>" here is 2. $2 * 2$ is then compressed to $1 * 1$.</p> 
 <p>Generally we connect a sub-sampling and pooling layer after a convolutional layer.</p>
 
 <p>{{ page.date | date_to_string }}</p>
