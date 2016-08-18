@@ -61,7 +61,9 @@ title: Deep Learning Notes
 <h3>2. Sub-sampling and pooling layer</h3>
 <p>We <i>sub-sample</i> 2-dimensional values $(p, q, r, s)$ in each node in layer $l-1$, then <i>pooled</i> them to $sigmoid(w * (p+q+r+s) + b)$, where $w$ and $b$ are parameters to be leant. The <i>field size</i> here is 2. $2 * 2$ is then compressed to $1 * 1$.</p> 
 <p>Generally we connect a sub-sampling and pooling layer after a convolutional layer.</p>
-<h2>NNLM</h2>
+
+<h2>NLP Applications</h2>
+<h3>1. NNLM</h3>
 <p>Model:</p>
 <div align = 'center'>
     <img src = '/images/2016-08-15-Deep-Learning-Notes/nnlm.png' width="400">
@@ -69,8 +71,16 @@ title: Deep Learning Notes
 <p>Explanation:
 <li>Input size: $n-1$. Dictionary size: $|D|$</li>
 <li>$w_{t-i} \to C(w_{t-i})$: Table look-up. Usually one-hot representation, so represenation size $m = |D|$.</li>
-<li>tanh layer: connect all the $C(w_{t-i})$. Linear + nonlinear transformation. Ouput: $Z = tanh(Hx + b)$, where $H \in R^{(m * (n-1)) * h}$.</li>
+<li>tanh layer: Linear + nonlinear transformation. Ouput: $Z = tanh(Hx + b)$, where $H \in R^{(m * (n-1)) * h}$.</li>
 <li>Softmax layer: Linear + nonlinear transformation. $Y = softmax(W * Z + d)$, where $W \in R^{|D| * h}$.</li>
 <li>Final result: $p(w_t|context) = \frac{e^{y_t}}{\sum_{i}^{|D|} e^{y_i}}$.</li>
 </p>
+
+<h3>2. Word Embedding Learning</h3>
+Given $w_t$ and the window size, for example, 2, we have $w_t$'s window $w_{t-2}^{t+2} = {w_{t-2}, w_{t-1}, w_{t}, w_{t+1}, w_{t+2}}$. If we replace $w_t$ with another word, a negative sample will be generated. Thus, we can transfer word embedding learning problem to supervised 2-class classification problem. We randomly initialize $C(w_i)$ in the first layer of NN, then linear transfer them, feed to SVM, then learn the word embeddings through BP.
+<h3>3. Other NLP Tasks</h3>
+<p>Tasks: POS, chunking, NER, SRL, etc.</p>
+<p>The first 3 tasks can be regarded as tagging problem. SRL aims to find predicates (or verbs) in the sentence and their respective auguments, such as subjects and objects.</p>
+<p>Word Embeddings learnt can be used to build the look-up table, transferring words to vectors. Continuing framwork is similar with word embedding learning.</p>
+
 <p>{{ page.date | date_to_string }}</p>
