@@ -41,9 +41,8 @@ title: Deep Learning Notes
 <p>Reference: <i>Reducing the dimensionality of Data by NN, Hinton</i></p>
 <p>
 <i>RBM</i>: a simple probabilistic undirected graph. Input: $x = (v_1, v_2, ..., v_m, h_1, h_2, ..., h_n) ^ T$. Model:
-\[P(x) = P(v,h) = \frac{1}{Z}\exp\{\sum_i{a_i v_i} + \sum_j{b_j h_j} + \sum{w_{ij} v_i h_j}\}\]. 
-</p>
-<p><i>Restricted</i>: no edges in inner $v$ and inner $h$. </p>
+\[P(x) = P(v,h) = \frac{1}{Z}\exp\{\sum_i{a_i v_i} + \sum_j{b_j h_j} + \sum{w_{ij} v_i h_j}\}\] 
+<i>Restricted</i>: no edges in inner $v$ and inner $h$. </p>
 <p>Learning: use <i>CD Algorithm</i> to calculate patial derivatives for each parameter in the MLE function, then gradient descend it.</p>
 
 <h2>CNN</h2>
