@@ -43,8 +43,8 @@ title: Deep Learning Notes
 <i>RBM</i>: a simple probabilistic undirected graph. Input: $x = (v_1, v_2, ..., v_m, h_1, h_2, ..., h_n) ^ T$. Model:
 \[P(x) = P(v,h) = \frac{1}{Z}\exp\{\sum_i{a_i v_i} + \sum_j{b_j h_j} + \sum{w_{ij} v_i h_j}\}\] 
 <i>Restricted</i>: no edges in inner $v$ and inner $h$. </p>
-<div align = "center"><
-    img src = '/images/2016-08-15-Deep-Learning-Notes/rbm.png' width="200">
+<div align = "center">
+    <img src = '/images/2016-08-15-Deep-Learning-Notes/rbm.png' width="200">
 </div>
 <p>Learning: use <i>CD Algorithm</i> to calculate patial derivatives for each parameter in the MLE function, then gradient descend it.</p>
 <p>DBM: pre-training (layer-wise learning) and fine-training.</p>
