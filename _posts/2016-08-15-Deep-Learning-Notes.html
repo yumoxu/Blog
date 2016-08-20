@@ -88,7 +88,7 @@ Given $w_t$ and the window size, for example, 2, we have $w_t$'s window $w_{t-2}
 <li>Only local information are considered--  solved by model design.</li>
 <li>No relations in tags are considered-- solved by norm design.</li>
 <h4>3.2 Model design</h4>
-<p>Input: sentence $w = (w_1, w_2, ..., w_T)$; capital feature $c = (c_1, c_2, ..., c_T)$; index feature $i-t = {(0, 1, 2, ..., T-1), (-1, 0, 1, ..., T-2), ..., (-T, 1-T, ..., 0)} to denote the current word$</p>
+<p>Input: sentence $w = (w_1, w_2, ..., w_T)$; capital feature $c = (c_1, c_2, ..., c_T)$; index feature $i-t = {(0, 1, 2, ..., T-1), (-1, 0, 1, ..., T-2), ..., (-T, 1-T, ..., 0)}$ to denote the current word$</p>
 <p>Framework: table look-up $\to$ conventional layer $to$ max pooling layer $\to$ hard-tanh layer $\to$ linear layer.</p>
 <p>Norm: evaluate output tag sequence as the summation of each point score and their respective transfer score.</p>
 
