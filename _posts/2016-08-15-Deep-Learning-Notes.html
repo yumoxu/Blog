@@ -75,12 +75,21 @@ title: Deep Learning Notes
 <li>Softmax layer: Linear + nonlinear transformation. $Y = softmax(W * Z + d)$, where $W \in R^{|D| * h}$.</li>
 <li>Final result: $p(w_t|context) = \frac{e^{y_t}}{\sum_{i}^{|D|} e^{y_i}}$.</li>
 </p>
-
-<h3>2. Word Embedding Learning</h3>
+<h3>2. Window-based approach</h3>
+<h4>2.1 Word Embedding Learning</h4>
 Given $w_t$ and the window size, for example, 2, we have $w_t$'s window $w_{t-2}^{t+2} = (w_{t-2}, w_{t-1}, w_{t}, w_{t+1}, w_{t+2})$. If we replace $w_t$ with another word, a negative sample will be generated. Thus, we can transfer word embedding learning problem to supervised 2-class classification problem. We randomly initialize $C(w_i)$ in the first layer of NN, linear transfer them, then feed to SVM, finally learn word embeddings as parameters.
-<h3>3. Other NLP Tasks</h3>
+<h4>2.2 Other NLP Tasks</h4>
 <p>Tasks: POS, chunking, NER, SRL, etc.</p>
 <p>The first 3 tasks can be regarded as tagging problem. SRL aims to find predicates (or verbs) in the sentence and their respective auguments, such as subjects and objects.</p>
 <p>Word Embeddings pre-learnt can be used to build the look-up table, transferring words to vectors. Continuing framwork is similar with word embedding learning.</p>
+
+<h3>3. Sentence-based approach (better)</h3>
+<h4>3.1 Problems in window-based approach and resolve: </h4>
+<li>Only local information are considered--  solved by model design.</li>
+<li>No relations in tags are considered-- solved by norm design.</li>
+<h4>3.2 Model design</h4>
+<p>Input: sentence $w = (w_1, w_2, ..., w_T)$; capital feature $c = (c_1, c_2, ..., c_T)$; index feature $i-t = {(0, 1, 2, ..., T-1), (-1, 0, 1, ..., T-2), ..., (-T, 1-T, ..., 0)} to denote the current word$</p>
+<p>Framework: table look-up $\to$ conventional layer $to$ max pooling layer $\to$ hard-tanh layer $\to$ linear layer.</p>
+<p>Norm: evaluate output tag sequence as the summation of each point score and their respective transfer score.</p>
 
 <p>{{ page.date | date_to_string }}</p>
