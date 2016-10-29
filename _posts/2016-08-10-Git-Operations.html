@@ -4,17 +4,27 @@ title: Git Operations
 ---
 <h2>{{ page.title }}</h2>
 <p>---------- branch ----------</p>
-<p>create a new branch: git branch dev</p> 
-<p>shift to another branch: git checkout dev</p>
-<p>create a new branch and shift to it: git checkout -b dev</p>
-<p>list local branches: git branch</p>
-<p>list local and remote branches: git branch -va</p>
-<p>merge branch dev to the active branch: git merge dev</p>
-<p>delete local branch: git branch -d dev</p>
-<p>delete remote branch(if default, change it in the project configuration on the github website): git push origin --delete dev</p>
-<p>---------- repository ----------</p>
-<p>create new remote repository handler and name it as 'origin': git remote add origin https://github.com/username/xxx.git</p>
-<p>delete remote repository handler 'origin': git remote rm origin</p>
+<p>Create a new branch: git branch dev</p> 
+<p>Shift to another branch: git checkout dev</p>
+<p>Create a new branch and shift to it: git checkout -b dev</p>
+<p>List local branches: git branch</p>
+<p>List local and remote branches: git branch -va</p>
+<p>Merge branch dev to the active branch: git merge dev</p>
+<p>Delete local branch: git branch -d dev</p>
+<p>Delete remote branch(if default, change it in the project configuration on the github website): git push origin --delete dev</p>
+
+<p>---------- Repository ----------</p>
+<p>List all the remote repositories: git remote -v</p>
+<p>Create new remote repository handler and name it as 'origin': git remote add origin https://github.com/username/xxx.git</p>
+<p>Delete remote repository handler 'origin': git remote rm origin</p>
+
+<p>---------- Data ----------</p>
+<p>Add update: git add filename / git add .</p>
+<p>Commit update to the local branch: git commit -m "summary"</p>
+<p>Update the remote branch with local branch: git push [remote-name] [local-name]</p>
+<p>Fetch update from remote repository (NO MERGE): git fetch [remote-name]</p>
+<p>Pull update from remote repository (If a local branch is setted to track a remote branch; MERGE): git pull [remote-name]</p>
+
 <p>---------- Applications ----------</p>
 <p>Build Github pages with jekyll:<br />[1]http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html
 <br />[2]https://pages.github.com
