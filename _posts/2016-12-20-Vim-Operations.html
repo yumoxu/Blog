@@ -1,0 +1,21 @@
+---
+layout: default
+title: Vim Operations
+---
+<h2>{{ page.title }}</h2>
+<p>---------- LAST LINE MODE ----------</p>
+<p>Substitute new string new for all the old strings old: %s/%[old]/%[new]/g</p>
+<p>Delete from the beginning to the current cursor line: 1, d</p>
+<p>---------- NORMAL MODE ----------</p>
+<p>First line: gg</p>
+<p>Last line: G</p>
+<p>Next page: ctrl + f</p>
+<p>Last page: ctrl + b</p>
+
+<p>Copy X lines from current cursor: %[X]yy</p>
+<p>Paste after current cursor: p</p>
+<p>Delete the current line: dd</p>
+<p>Recover: u</p>
+
+<p>{{ page.date | date_to_string }}</p>
+
