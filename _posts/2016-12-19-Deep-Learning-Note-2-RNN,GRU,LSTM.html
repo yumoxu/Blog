@@ -1,0 +1,62 @@
+---
+layout: default
+title: Deep Learning Note 2: RNN, GRU, LSTM
+--
+<head>
+    <link rel="stylesheet" type="text/css" href="note_style.css" />
+    <script type="text/javascript" async
+        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+</head>
+
+<h1>{{ page.title }}</h1>
+
+<h2>RNN</h2>
+<h3>Model:</h3>
+
+<div align = "center">
+    <img src = '/images/2016-12-19-Deep-Learning-Note-2-RNN,GRU,LSTM/RNN.png' width = "200">
+</div>
+
+<div align = "center">
+    <img src = "/images/2016-12-19-Deep-Learning-Note-2-RNN,GRU,LSTM/The_inputs_and_outputs_to_a_neuron_of_a_RNN.png" width = "200">
+</div>
+
+<h3>Algorithm:</h3>
+<h3>Problem: the vanishing/exploding gradient</h3>
+
+<h2>Solutions</h2>
+<ul>
+    <li>GRU: Gated Unit</li>
+    <li>LSTM: Long-short-term memory</li>
+</ul>
+
+<h2>GRU</h2> 
+<p>
+Definition:
+
+</p>
+
+<div align = "center">
+    <img src = '/images/2016-08-15-Deep-Learning-Notes/rbm.png' width="200">
+</div>
+
+<h2>LSTM</h2>
+<p>Definition:</p>
+
+<!--Three LSTM Figures-->
+<div align = "center">
+    <img src = '/images/2016-12-19-Deep-Learning-Note-2-RNN,GRU,LSTM/LSTM1.png' width="200">
+</div>
+
+<div align = "center">
+    <img src = '/images/2016-12-19-Deep-Learning-Note-2-RNN,GRU,LSTM/LSTM2.png' width="200">
+</div>
+
+<div align = "center">
+    <img src = '/images/2016-12-19-Deep-Learning-Note-2-RNN,GRU,LSTM/LSTM3.jpg' width="200">
+</div>
+<p>{{ page.date | date_to_string }}</p>
