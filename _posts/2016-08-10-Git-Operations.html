@@ -3,7 +3,7 @@ layout: default
 title: Git Operations
 ---
 <h2>{{ page.title }}</h2>
-<p>---------- branch ----------</p>
+<h3>Branch</h3>
 <p>Create a new branch: git branch dev</p> 
 <p>Shift to another branch: git checkout dev</p>
 <p>Create a new branch and shift to it: git checkout -b dev</p>
@@ -13,19 +13,19 @@ title: Git Operations
 <p>Delete local branch: git branch -d dev</p>
 <p>Delete remote branch(if default, change it in the project configuration on the github website): git push origin --delete dev</p>
 
-<p>---------- Repository ----------</p>
+<h3>Repository</h3>
 <p>List all the remote repositories: git remote -v</p>
 <p>Create new remote repository handler and name it as 'origin': git remote add origin https://github.com/username/xxx.git</p>
 <p>Delete remote repository handler 'origin': git remote rm origin</p>
 
-<p>---------- Data ----------</p>
+<h3>Data</h3>
 <p>Add update: git add filename / git add .</p>
 <p>Commit update to the local branch: git commit -m "summary"</p>
 <p>Update the remote branch with local branch: git push [remote-name] [local-name]</p>
 <p>Fetch update from remote repository (NO MERGE): git fetch [remote-name]</p>
 <p>Pull update from remote repository (If a local branch is setted to track a remote branch; MERGE): git pull [remote-name]</p>
 
-<p>---------- Applications ----------</p>
+<h3>Applications</h3>
 <p>Build Github pages with jekyll:<br />[1]http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html
 <br />[2]https://pages.github.com
 </p>
