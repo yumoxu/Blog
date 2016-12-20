@@ -30,9 +30,50 @@ title: Deep Learning Note 2
 <h3>Problem: the vanishing/exploding gradient</h3>
 <p>Forwad propagation:</p>
 \[h_t = 
-\begin{pmatrix} W & W^{(hx)} \end{pmatrix} 
+\begin{pmatrix} W^{(hh)} & W^{(hx)} \end{pmatrix} 
 \begin{pmatrix} f({h_{t-1}}) \\ X_t \end{pmatrix}\]
-
+\[\hat{y_t} = W^{(s)}f(h_t)\]
+<p>Totol error:</p>
+\[E = \sum_{t=1}^T E_t\]
+<p>Now, backpropogate the most difficult parametre $W^{hh}$:</p>
+\[
+\frac{\partial E}{\partial W^{(hh)}} = 
+\sum_{t=1}^{T} \frac{\partial E_t}{W^{(hh)}}
+\]
+<p>where according to the hard-core chain rule, we have</p>
+\[
+\frac{\partial E_t}{\partial W^{(hh)}}
+= 
+\sum_{k=1}^t
+\frac{\partial E_t}{\partial \hat{y_t}}
+\frac{\partial \hat{y_t}}{\partial h_t}
+\frac{\partial h_t}{\partial h_k}
+\frac{\partial h_k}{\partial W^{(hh)}}
+\]
+<p>Now, the most dynamic part we sum over:</p>
+\[
+\frac{\partial h_t}{\partial h_k} =
+\prod_{j = k+1}^t \frac{\partial h_j}{\partial h_{j-1}}
+\]
+<p>We know that the numerator and the denominator of the element we product over are both vectors, so we have the Jacobian Matrix:</p>
+\[
+\frac{\partial h_j}{\partial h_{j-1}} = 
+\begin{bmatrix}
+\frac{\partial h_j}{\partial h_{j-1, 1}} &
+\cdots &
+\frac{\partial h_j}{\partial h_{j-1, n}}
+\end{bmatrix}
+\begin{bmatrix}
+\frac{\partial h_{j,1}}{\partial h_{j-1, 1}} & \cdots & \frac{\partial h_{j,n}}{\partial h_{j-1, 1}} 
+\vdots & \ddots & \vdots 
+\frac{\partial h_{j,n}}{\partial h_{j-1, 1}} & \cdots & \frac{\partial h_{j,n}}{\partial h_{j-1, n}}
+\end{bmatrix}
+\]
+<p>Here, we need to compute $\frac{\partial h_{j,p}}{\partial h_{j-1, q}}$. The final result is (check by yourself):</p>
+\[
+\frac{\partial h_{j,p}}{\partial h_{j-1, q}}=
+W^{T} \mathrm{diag}[f^\prime(h_{j-1})]
+\]
 <h2>Solutions</h2>
 <ul>
     <li>GRU: Gated Unit</li>
