@@ -26,7 +26,8 @@ title: Deep Learning Note 2
     <img src = "/images/2016-12-19-Deep-Learning-Note-2/The_inputs_and_outputs_to_a_neuron_of_a_RNN.png" width = "250">
 </div>
 
-<h3>Algorithm:</h3>
+i^{T} \mathrm{diag}[f^\prime(h_{j-1})]
+mh3>Algorithm:</h3>
 <h3>Problem: the vanishing/exploding gradient</h3>
 <p>Forwad propagation:</p>
 \[h_t = 
@@ -71,9 +72,28 @@ title: Deep Learning Note 2
 \]
 <p>Here, we need to compute $\frac{\partial h_{j,p}}{\partial h_{j-1, q}}$. The final result is (check by yourself):</p>
 \[
-\frac{\partial h_{j,p}}{\partial h_{j-1, q}}=
+\frac{\partial h_{j}}{\partial h_{j-1}}=
 W^{T} \mathrm{diag}[f^\prime(h_{j-1})]
 \]
+<p>Now, analyse the norms of the Jocabians, yeilds:</p>
+\[
+\|\frac{\partial h_j}{\partial h_{j-1}}\|
+\le
+\|W^T\|
+\|\mathrm{diag}[f^\prime(h_{j-1})]\|
+\le
+\beta_W\beta_h
+\]
+\[
+\|\frac{\partial h_t}{\partial h_k}\|
+=
+\prod_{j = k+1}^t \|\frac{\partial h_j}{\partial h_{j-1}}\|
+\le
+(\beta_W\beta_h)^{t-k}
+\]
+<p>
+This can be very small/large quickly, the locality assumption of gradient descent thus breaks down.
+</p>
 <h2>Solutions</h2>
 <ul>
     <li>GRU: Gated Unit</li>
