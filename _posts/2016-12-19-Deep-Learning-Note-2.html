@@ -7,6 +7,7 @@ title: Deep Learning Note 2
     <script type="text/javascript" async
         src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
     </script>
+    <!-- Build mathjax support-->
     <script type="text/x-mathjax-config">
         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
     </script>
@@ -27,6 +28,10 @@ title: Deep Learning Note 2
 
 <h3>Algorithm:</h3>
 <h3>Problem: the vanishing/exploding gradient</h3>
+<p>Forwad propagation:</p>
+\[h_t = 
+\begin{pmatrix} W & W^{(hx)} \end{pmatrix} 
+\begin{pmatrix} f({h_{t-1}})  X_t \end{pmatrix}\]
 
 <h2>Solutions</h2>
 <ul>
